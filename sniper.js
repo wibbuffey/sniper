@@ -12,15 +12,17 @@ client.on("ready", () => {
 });
 
 client.on("messageUpdate", (oldMessage, newMessage) => {
-  if (message.author.bot) { return };
-  
+  if (newMessage.author.bot) {
+    return;
+  }
+
   newMessage.channel.send({
     embeds: [
       {
         title: "A message was edited!",
         author: {
-          name: newMessage.member.user.tag,
-          icon_url: newMessage.member.user.avatarURL(),
+          name: newMessage.author.tag,
+          icon_url: newMessage.author.avatarURL(),
         },
         description: oldMessage.content,
       },
@@ -29,8 +31,10 @@ client.on("messageUpdate", (oldMessage, newMessage) => {
 });
 
 client.on("messageDelete", (message) => {
-  if (message.author.bot) { return };
-  
+  if (message.author.bot) {
+    return;
+  }
+
   message.channel.send({
     embeds: [
       {
