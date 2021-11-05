@@ -12,6 +12,8 @@ client.on("ready", () => {
 });
 
 client.on("messageUpdate", (oldMessage, newMessage) => {
+  if (message.author.bot) { return };
+  
   newMessage.channel.send({
     embeds: [
       {
@@ -27,6 +29,8 @@ client.on("messageUpdate", (oldMessage, newMessage) => {
 });
 
 client.on("messageDelete", (message) => {
+  if (message.author.bot) { return };
+  
   message.channel.send({
     embeds: [
       {
